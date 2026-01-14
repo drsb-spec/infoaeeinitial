@@ -1,0 +1,222 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+
+/* Accordion Height */
+:root {
+  --a-height: 250px;
+  --text-offset: 160px; /* 250 - 90 */
+}
+
+/* Page Title */
+h1 {
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  color: #333;
+}
+
+.accordion {
+  width: 100%;
+  max-width: 900px;
+  height: var(--a-height);
+  overflow: hidden;
+  margin: 50px auto;
+}
+
+.accordion ul {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+.accordion ul li {
+  display: table-cell;
+  vertical-align: bottom;
+  position: relative;
+  width: 16.666%;
+  height: var(--a-height);
+  background-repeat: no-repeat;
+
+  /* FIXED: align images to the left instead of center */
+  background-position: left center;
+
+  transition: all 500ms ease;
+}
+
+.accordion ul li div {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.accordion ul li div a {
+  display: block;
+  height: var(--a-height);
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  transition: all 200ms ease;
+}
+
+.accordion ul li div a * {
+  opacity: 0;
+  margin: 0;
+  width: 100%;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 5;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateX(-20px);
+  transition: all 400ms ease;
+}
+
+.accordion ul li div a h2 {
+  font-family: Montserrat, sans-serif;
+  text-overflow: clip;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  top: var(--text-offset);
+}
+
+.accordion ul li div a p {
+  top: var(--text-offset);
+  font-size: 13.5px;
+}
+
+/* Background images */
+.accordion ul li:nth-child(1) {
+  background-image: url("img/escola11.gif");
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.accordion ul li:nth-child(2) {
+  background-image: url("http://michael-ferry.com/assets/accordion2.jpg");
+}
+.accordion ul li:nth-child(3) {
+  background-image: url("img/coding-projetos.gif");
+}
+.accordion ul li:nth-child(4) {
+  background-image: url("http://michael-ferry.com/assets/accordion4.jpg");
+}
+.accordion ul li:nth-child(5) {
+  background-image: url("http://michael-ferry.com/assets/accordion5.jpg");
+}
+.accordion ul li:nth-child(6) {
+  background-image: url("http://michael-ferry.com/assets/accordion6.jpg");
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Hover and Focus Effects */
+.accordion ul:hover li,
+.accordion ul:focus-within li {
+  width: 8%;
+}
+
+.accordion ul li:focus {
+  outline: none;
+}
+
+.accordion ul:hover li:hover,
+.accordion ul li:focus,
+.accordion ul:focus-within li:focus {
+  width: 60%;
+}
+
+.accordion ul:hover li:hover a,
+.accordion ul li:focus a,
+.accordion ul:focus-within li:focus a {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.accordion ul:hover li:hover a *,
+.accordion ul li:focus a *,
+.accordion ul:focus-within li:focus a * {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.accordion ul:hover li {
+  border-radius: 20px;
+  width: 8% !important;
+}
+
+.accordion ul:hover li a * {
+  border-radius: 20px;
+  opacity: 0 !important;
+}
+
+.accordion ul:hover li:hover {
+  border-radius: 20px;
+  width: 60% !important;
+}
+
+.accordion ul:hover li:hover a {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+
+.accordion ul:hover li:hover a * {
+  opacity: 1 !important;
+  transform: translateX(0);
+}
+
+/* Responsive Stack for Mobile */
+@media screen and (max-width: 600px) {
+  
+   /* Mobile accordion height */
+   :root {
+    --a-height: 120px;   /* adjust this to make it taller or shorter */
+    --text-offset: 40px; /* adjust so text sits nicely */
+  }
+
+  .accordion ul li {
+    height: var(--a-height);
+  }
+  body {
+    margin: 0;
+  }
+
+  .accordion {
+    height: auto;
+  }
+
+  .accordion ul {
+    display: block;
+  }
+
+  .accordion ul li {
+    display: block;
+    width: 100% !important;
+    height: 200px; /* make images visible */
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Disable desktop hover expansion on mobile */
+  .accordion ul li:hover,
+  .accordion ul:hover li,
+  .accordion ul:hover li:hover {
+    width: 100% !important;
+    height: 200px !important;
+  }
+
+  /* Make text always visible on mobile */
+  .accordion ul li div a * {
+    opacity: 1 !important;
+    transform: translateX(0);
+    white-space: normal; /* allow text to wrap */
+  }
+}
+
